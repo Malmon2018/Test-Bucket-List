@@ -7,15 +7,80 @@
 //
 
 import UIKit
+import Firebase
 
-class ViewController: UIViewController, UINavigationBarDelegate {
+class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var navbar1: UINavigationBar!
+    @IBOutlet weak var tableViewTbl: UITableView!
+    var storageRef : StorageReference!
+    
+    //Array for iteration
+    var bucketList = [String]()
+    var bucketTitle = [String]()
+    let defaults = UserDefaults.standard
+    
+    func addToBucketList(newBucket: String) {
+        if let listItems = defaults.array(forKey: "bucketListArray") as? [String] {
+            bucketList = listItems
+        }
+        bucketList.append(newBucket)
+        defaults.set(bucketList, forKey: "bucketListArray")
+    }
+    
+    func addToBucketTitle(newTitle: String) {
+        if let titleItems = defaults.array(forKey: "bucketTitleArray") as? [String] {
+            bucketTitle = titleItems
+        }
+        bucketTitle.append(newTitle)
+        defaults.set(bucketTitle, forKey: "bucketTitleArray")
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return bucketList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellId") as! customTableViewCell
+        cell.cellTitleLbl.text = bucketTitle[indexPath.row]
+        fetchFireBaseImage(imageURLLoc: bucketList[indexPath.row], imageView: cell.cellImage)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert{
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        storageRef = Storage.storage().reference()
+        if let listItems = defaults.array(forKey: "bucketListArray") as? [String] {
+            bucketList = listItems
+        }
+        if let titleItems = defaults.array(forKey: "bucketTitleArray") as? [String] {
+            bucketTitle = titleItems
+        }
+        
         self.navbar1.delegate = self
-        // Do any additional setup after loading the view, typically from a nib.
+        if bucketList.count == 0 {
+            tableViewTbl.isHidden = true
+            editButtonItem.isEnabled = false
+        } else {
+            tableViewTbl.isHidden = false
+            editButtonItem.isEnabled = true
+        }
     }
 
     func position(for bar: UIBarPositioning) -> UIBarPosition {
@@ -27,9 +92,34 @@ class ViewController: UIViewController, UINavigationBarDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func back(segue: UIStoryboardSegue) {
+    func fetchFireBaseImage(imageURLLoc: String, imageView: UIImageView) {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let documentsDirectory = paths[0]
+        let filePath = "file:\(documentsDirectory)/myimage_"
+            + "\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
+        let fileURL = URL(string: filePath)
+        let storagePath = imageURLLoc
         
+        // [START downloadimage]
+        storageRef.child(storagePath).write(toFile: fileURL!, completion: { (url, error) in
+            if let error = error {
+                print("Error downloading:\(error)")
+                return
+            } else if let imagePath = url?.path {
+                print("Downloaded image successfully")
+                imageView.image = UIImage(contentsOfFile: imagePath)
+                return
+            }
+            self.tableViewTbl.reloadData()
+        })
+        
+    }
+    
+    @IBAction func back(segue: UIStoryboardSegue) {
+    }
+    
+    @IBAction func addOptionButton(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "addOption", sender: self)
     }
 
 }
-

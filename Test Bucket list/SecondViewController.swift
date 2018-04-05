@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseStorage
 
 class SecondViewController: UIViewController, UINavigationBarDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
 
+    
     @IBOutlet weak var whatsGoingOnTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var datePickerText: UITextField!
@@ -17,14 +21,17 @@ class SecondViewController: UIViewController, UINavigationBarDelegate, UITextFie
     @IBOutlet weak var addImage: UIButton!
     @IBOutlet weak var navbar2: UINavigationBar!
     let datePicker = UIDatePicker()
+    var storageRef : StorageReference!
+   
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        storageRef = Storage.storage().reference()
         whatsGoingOnTextField.delegate = self
         
         self.navbar2.delegate = self
-        addImage.layer.borderWidth = 1
-        addImage.layer.borderColor = UIColor.gray.cgColor
+        //addImage.layer.borderWidth = 1
+        //addImage.layer.borderColor = UIColor.gray.cgColor
 
         createDatePicker()
         // Do any additional setup after loading the view.
@@ -63,7 +70,6 @@ class SecondViewController: UIViewController, UINavigationBarDelegate, UITextFie
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == whatsGoingOnTextField {
-            
             textField.resignFirstResponder()
         }
         return true
@@ -90,7 +96,7 @@ class SecondViewController: UIViewController, UINavigationBarDelegate, UITextFie
             imagePickerController.sourceType = .camera
             self.present(imagePickerController, animated: true, completion: nil)
         }))
-        actionSheet.addAction(UIAlertAction(title: "Choose from gallery", style: .default, handler: { (action:UIAlertAction) in
+        actionSheet.addAction(UIAlertAction(title: "Choose From Gallery", style: .default, handler: { (action:UIAlertAction) in
             imagePickerController.sourceType = .photoLibrary
             self.present(imagePickerController, animated: true, completion: nil)
         }))
@@ -105,12 +111,45 @@ class SecondViewController: UIViewController, UINavigationBarDelegate, UITextFie
         picker.dismiss(animated: true, completion: nil)
         self.addImage.isHidden = true
         
+        //Upload to Firebase Storage - BEGIN
+        guard let imageData = UIImageJPEGRepresentation(image, 0.8) else { return }
+        let imagePath = "malavikha_" +
+        "/\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpeg"
+        self.storageRef.child(imagePath).putData(imageData, metadata: metaData) { (metadata, error) in
+            if let error = error {
+                print("Error uploading: \(error)")
+                return
+            }
+            self.uploadSuccess(metadata!, storagePath: imagePath)
+        }
+        
     }
+    
+    func uploadSuccess(_ metadata: StorageMetadata, storagePath: String) {
+        print("Upload Succeeded!")
+        UserDefaults.standard.set(storagePath, forKey: "storagePath")
+        UserDefaults.standard.synchronize()
+    }
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-    @IBAction func done(segue: UIStoryboardSegue) {
+
+    
+    @IBAction func saveButton(_ sender: Any) {
+        performSegue(withIdentifier: "saveBucketSegue", sender: self)
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "saveBucketSegue" {
+            let destinationVC = segue.destination as! ViewController
+            destinationVC.addToBucketList(newBucket: (UserDefaults.standard.object(forKey: "storagePath") as? String)!)
+            destinationVC.addToBucketTitle(newTitle: whatsGoingOnTextField.text!)
+            print("from second view controller: ")
+        }
     }
     
 }
