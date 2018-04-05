@@ -42,7 +42,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="628"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCellId" rowHeight="100" id="UNM-5r-yJn" customClass="customTableViewCell" customModule="Test_Bucket_list" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCellId" rowHeight="100" id="UNM-5r-yJn" customClass="CustomTableViewCell" customModule="Test_Bucket_list" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UNM-5r-yJn" id="5lf-5u-7pM">
@@ -89,9 +89,9 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <outlet property="cellImage" destination="3Tf-Po-Yga" id="Ivi-iy-a3F"/>
-                                            <outlet property="cellTitleLbl" destination="CN1-j5-4I8" id="T2i-4D-OP7"/>
-                                            <outlet property="tableCellView" destination="Iwg-US-XiP" id="ej0-wr-eQd"/>
+                                            <outlet property="cellImage" destination="3Tf-Po-Yga" id="kt2-53-n5R"/>
+                                            <outlet property="cellTitleLbl" destination="CN1-j5-4I8" id="Li5-Ym-d0f"/>
+                                            <outlet property="tableCellView" destination="Iwg-US-XiP" id="vI0-TC-9P0"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -53,7 +53,7 @@ class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellId") as! customTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellId") as! CustomTableViewCell
         cell.cellTitleLbl.text = bucketTitle[indexPath.row]
         fetchFireBaseImage(imageURLLoc: bucketList[indexPath.row], imageView: cell.cellImage)
         return cell
