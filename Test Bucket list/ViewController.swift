@@ -64,8 +64,7 @@ class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDele
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        myIndex = indexPath.row
-        performSegue(withIdentifier: "addOption", sender: self)
+        
         tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
     }
     
