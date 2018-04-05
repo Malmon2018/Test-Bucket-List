@@ -9,7 +9,19 @@
 import UIKit
 import Firebase
 
-class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDelegate, UITableViewDataSource {
+var myIndex = 0
+
+class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDelegate, UITableViewDataSource, UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        let previewView = storyboard?.instantiateViewController(withIdentifier: "editIdentifier")
+        return previewView
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        let finalPreview = storyboard?.instantiateViewController(withIdentifier: "editIdentifier")
+        show(finalPreview!, sender: self)
+    }
+    
     
     @IBOutlet weak var navbar1: UINavigationBar!
     @IBOutlet weak var tableViewTbl: UITableView!
@@ -50,13 +62,19 @@ class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDele
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        myIndex = indexPath.row
+        performSegue(withIdentifier: "addOption", sender: self)
+        tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+    }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert{
-            
-        }
+            self.bucketList.remove(at: indexPath.row)
+            self.tableViewTbl.reloadData()
+            //tableView.deleteRows(at: [indexPath], with: .fade)
+        } 
     }
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -65,7 +83,15 @@ class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         storageRef = Storage.storage().reference()
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
+            registerForPreviewing(with: self, sourceView: view)
+            
+        } else {
+            print("Error!!!!!")
+        }
         if let listItems = defaults.array(forKey: "bucketListArray") as? [String] {
             bucketList = listItems
         }
@@ -123,3 +149,5 @@ class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDele
     }
 
 }
+
+

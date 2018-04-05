@@ -13,7 +13,6 @@ import FirebaseStorage
 class SecondViewController: UIViewController, UINavigationBarDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
 
-    
     @IBOutlet weak var whatsGoingOnTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var datePickerText: UITextField!
@@ -26,12 +25,16 @@ class SecondViewController: UIViewController, UINavigationBarDelegate, UITextFie
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
+            registerForPreviewing(with: self as! UIViewControllerPreviewingDelegate, sourceView: view)
+        } else {
+            print("Error!!!!!")
+        }
         storageRef = Storage.storage().reference()
         whatsGoingOnTextField.delegate = self
         
         self.navbar2.delegate = self
-        //addImage.layer.borderWidth = 1
-        //addImage.layer.borderColor = UIColor.gray.cgColor
 
         createDatePicker()
         // Do any additional setup after loading the view.
@@ -61,13 +64,13 @@ class SecondViewController: UIViewController, UINavigationBarDelegate, UITextFie
         
         datePickerText.text = dateFormatter.string(from: datePicker.date)
         self.view.endEditing(true)
-        
     }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == whatsGoingOnTextField {
             textField.resignFirstResponder()
@@ -140,7 +143,6 @@ class SecondViewController: UIViewController, UINavigationBarDelegate, UITextFie
     
     @IBAction func saveButton(_ sender: Any) {
         performSegue(withIdentifier: "saveBucketSegue", sender: self)
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

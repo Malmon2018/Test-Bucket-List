@@ -14,7 +14,7 @@
         <!--View Controller-->
         <scene sceneID="wVq-dc-Ula">
             <objects>
-                <viewController id="hsg-MV-9Zp" customClass="ViewController" customModule="Test_Bucket_list" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="editIdentifier" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hsg-MV-9Zp" customClass="ViewController" customModule="Test_Bucket_list" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jXd-W8-bD6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,7 +39,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8oR-R8-qIM">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="628"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCellId" rowHeight="100" id="UNM-5r-yJn" customClass="customTableViewCell" customModule="Test_Bucket_list" customModuleProvider="target">
@@ -115,6 +115,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="22p-yf-cUf"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="9r4-xR-hW3"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="navbar1" destination="DVa-Y0-ZFc" id="hxC-Oh-fZf"/>
                         <outlet property="tableViewTbl" destination="8oR-R8-qIM" id="Vxb-Dv-hyJ"/>
