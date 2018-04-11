@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-var myIndex = 0
+
 
 class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDelegate, UITableViewDataSource, UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
@@ -31,6 +31,7 @@ class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDele
     var bucketList = [String]()
     var bucketTitle = [String]()
     let defaults = UserDefaults.standard
+    
     
     func addToBucketList(newBucket: String) {
         if let listItems = defaults.array(forKey: "bucketListArray") as? [String] {
@@ -71,9 +72,12 @@ class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDele
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             self.bucketList.remove(at: indexPath.row)
-            self.tableViewTbl.reloadData()
-            //tableView.deleteRows(at: [indexPath], with: .fade)
-        } 
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+        } else {
+            
+        }
     }
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -82,7 +86,9 @@ class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableViewTbl.isUserInteractionEnabled = true
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longPress))
+        tableViewTbl.addGestureRecognizer(longPressGesture)
         storageRef = Storage.storage().reference()
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
@@ -146,7 +152,14 @@ class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDele
     @IBAction func addOptionButton(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "addOption", sender: self)
     }
-
+    
+    @objc func longPress() {
+        
+        if tableViewTbl.isExclusiveTouch == true {
+            
+        }
+        
+    }
 }
 
 
