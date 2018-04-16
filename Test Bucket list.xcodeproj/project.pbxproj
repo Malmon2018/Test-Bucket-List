@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		9D2A9DB76EF9F1D34C11A569 /* Pods_Test_Bucket_list.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EA9450EB80905008E1E1421 /* Pods_Test_Bucket_list.framework */; };
+		DC0DE5CB207DB28700EB9019 /* DispViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0DE5CA207DB28700EB9019 /* DispViewController.swift */; };
+		DC1D8FC62084EB1D00BEE08E /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1D8FC52084EB1D00BEE08E /* CustomTableViewCell.swift */; };
 		DC4064492047AC4F00ECAB4B /* Calender.png in Resources */ = {isa = PBXBuildFile; fileRef = DC4064482047AC4F00ECAB4B /* Calender.png */; };
 		DC5B36BC2072EB2F00878F24 /* SingleBucketCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5B36BB2072EB2F00878F24 /* SingleBucketCellModel.swift */; };
-		DCACFC2920711B1500AE86CE /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCACFC2820711B1500AE86CE /* CustomTableViewCell.swift */; };
 		DCBDF9532040F4C800674ADA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBDF9522040F4C800674ADA /* AppDelegate.swift */; };
 		DCBDF9552040F4C800674ADA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBDF9542040F4C800674ADA /* ViewController.swift */; };
 		DCBDF9582040F4C800674ADA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCBDF9562040F4C800674ADA /* Main.storyboard */; };
@@ -19,16 +20,16 @@
 		DCBDF9672040FC7700674ADA /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBDF9662040FC7700674ADA /* SecondViewController.swift */; };
 		E6AB9DF32075C43F003175DD /* Christmas Tree.png in Resources */ = {isa = PBXBuildFile; fileRef = E6AB9DF22075C43E003175DD /* Christmas Tree.png */; };
 		E6AB9DFB2075C5E0003175DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6AB9DFA2075C5DF003175DD /* GoogleService-Info.plist */; };
-		E6F212ED2075EF4A002E5E48 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F212EC2075EF4A002E5E48 /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2EA9450EB80905008E1E1421 /* Pods_Test_Bucket_list.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Test_Bucket_list.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AADE020A4252D8BD5D3978E8 /* Pods-Test Bucket list.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test Bucket list.release.xcconfig"; path = "Pods/Target Support Files/Pods-Test Bucket list/Pods-Test Bucket list.release.xcconfig"; sourceTree = "<group>"; };
 		B60F6CC5F7A0E32B532F166A /* Pods-Test Bucket list.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test Bucket list.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Test Bucket list/Pods-Test Bucket list.debug.xcconfig"; sourceTree = "<group>"; };
+		DC0DE5CA207DB28700EB9019 /* DispViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispViewController.swift; sourceTree = "<group>"; };
+		DC1D8FC52084EB1D00BEE08E /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		DC4064482047AC4F00ECAB4B /* Calender.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Calender.png; sourceTree = "<group>"; };
 		DC5B36BB2072EB2F00878F24 /* SingleBucketCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleBucketCellModel.swift; sourceTree = "<group>"; };
-		DCACFC2820711B1500AE86CE /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		DCBDF94F2040F4C800674ADA /* Test Bucket list.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Test Bucket list.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCBDF9522040F4C800674ADA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCBDF9542040F4C800674ADA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -39,7 +40,6 @@
 		DCBDF9662040FC7700674ADA /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		E6AB9DF22075C43E003175DD /* Christmas Tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Christmas Tree.png"; sourceTree = "<group>"; };
 		E6AB9DFA2075C5DF003175DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E6F212EC2075EF4A002E5E48 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,17 +96,15 @@
 				DCBDF9522040F4C800674ADA /* AppDelegate.swift */,
 				DCBDF9542040F4C800674ADA /* ViewController.swift */,
 				DCBDF9662040FC7700674ADA /* SecondViewController.swift */,
-				E6F212EC2075EF4A002E5E48 /* CustomTableViewCell.swift */,
 				DCBDF9562040F4C800674ADA /* Main.storyboard */,
-				DCACFC2820711B1500AE86CE /* CustomTableViewCell.swift */,
+				DC1D8FC52084EB1D00BEE08E /* CustomTableViewCell.swift */,
+				DC0DE5CA207DB28700EB9019 /* DispViewController.swift */,
 				DCBDF9592040F4C800674ADA /* Assets.xcassets */,
 				E6AB9DFA2075C5DF003175DD /* GoogleService-Info.plist */,
 				DCBDF95B2040F4C800674ADA /* LaunchScreen.storyboard */,
-				DCF4E445204E30F500918FB3 /* Christmas Tree.png */,
 				DC4064482047AC4F00ECAB4B /* Calender.png */,
 				E6AB9DF22075C43E003175DD /* Christmas Tree.png */,
 				DCBDF95E2040F4C800674ADA /* Info.plist */,
-				DCF4E447204E332700918FB3 /* GoogleService-Info.plist */,
 			);
 			path = "Test Bucket list";
 			sourceTree = "<group>";
@@ -173,7 +171,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCF4E446204E30F500918FB3 /* Christmas Tree.png in Resources */,
 				DCBDF95D2040F4C800674ADA /* LaunchScreen.storyboard in Resources */,
 				E6AB9DFB2075C5E0003175DD /* GoogleService-Info.plist in Resources */,
 				DC4064492047AC4F00ECAB4B /* Calender.png in Resources */,
@@ -262,10 +259,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC1D8FC62084EB1D00BEE08E /* CustomTableViewCell.swift in Sources */,
+				DC0DE5CB207DB28700EB9019 /* DispViewController.swift in Sources */,
 				DCBDF9672040FC7700674ADA /* SecondViewController.swift in Sources */,
 				DC5B36BC2072EB2F00878F24 /* SingleBucketCellModel.swift in Sources */,
 				DCBDF9552040F4C800674ADA /* ViewController.swift in Sources */,
-				E6F212ED2075EF4A002E5E48 /* CustomTableViewCell.swift in Sources */,
 				DCBDF9532040F4C800674ADA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

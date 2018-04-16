@@ -13,18 +13,24 @@ import FirebaseStorage
 class SecondViewController: UIViewController, UINavigationBarDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
 
+    @IBOutlet weak var okayButton: UIButton!
     @IBOutlet weak var whatsGoingOnTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var datePickerText: UITextField!
     
     @IBOutlet weak var addImage: UIButton!
     @IBOutlet weak var navbar2: UINavigationBar!
+    var newImage: UIImage!
     let datePicker = UIDatePicker()
     var storageRef : StorageReference!
-   
+    var editTitle = String()
+    var editImage = UIImage()
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        okayButton.isHidden = true
+        imageView.image = editImage
+        whatsGoingOnTextField.text = editTitle
         
         if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
             registerForPreviewing(with: self as! UIViewControllerPreviewingDelegate, sourceView: view)
@@ -154,4 +160,9 @@ class SecondViewController: UIViewController, UINavigationBarDelegate, UITextFie
         }
     }
     
+
+    @IBAction func okayButtoPressed(_ sender: Any) {
+        
+        
+    }
 }

@@ -90,7 +90,7 @@
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="cellImage" destination="3Tf-Po-Yga" id="kt2-53-n5R"/>
-                                            <outlet property="cellTitleLbl" destination="CN1-j5-4I8" id="Li5-Ym-d0f"/>
+                                            <outlet property="cellTitleLbl" destination="CN1-j5-4I8" id="RYO-ce-HyP"/>
                                             <outlet property="tableCellView" destination="Iwg-US-XiP" id="vI0-TC-9P0"/>
                                         </connections>
                                     </tableViewCell>
@@ -115,13 +115,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="22p-yf-cUf"/>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="9r4-xR-hW3"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="navbar1" destination="DVa-Y0-ZFc" id="hxC-Oh-fZf"/>
                         <outlet property="tableViewTbl" destination="8oR-R8-qIM" id="Vxb-Dv-hyJ"/>
+                        <segue destination="vos-Rg-umz" kind="show" identifier="dispSegue" id="V16-2d-ytd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vdc-zI-Wqf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -194,6 +193,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0EM-g6-awa">
+                                <rect key="frame" x="184" y="582" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="okayButtoPressed:" destination="aVi-R8-DkR" eventType="touchUpInside" id="Sat-Wj-HHN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -217,6 +226,7 @@
                         <outlet property="datePickerText" destination="qQu-pc-EBL" id="gcH-d5-MVB"/>
                         <outlet property="imageView" destination="czL-sr-Yf0" id="6WN-9f-9pC"/>
                         <outlet property="navbar2" destination="euo-nO-9VZ" id="hjD-ta-cXn"/>
+                        <outlet property="okayButton" destination="0EM-g6-awa" id="81V-Ic-1zA"/>
                         <outlet property="whatsGoingOnTextField" destination="nMg-jh-twC" id="8Rg-5j-4LB"/>
                     </connections>
                 </viewController>
@@ -225,9 +235,55 @@
             </objects>
             <point key="canvasLocation" x="1923.1884057971015" y="-133.69565217391306"/>
         </scene>
+        <!--Disp View Controller-->
+        <scene sceneID="MiC-Ym-2pA">
+            <objects>
+                <viewController storyboardIdentifier="DispViewController" id="vos-Rg-umz" customClass="DispViewController" customModule="Test_Bucket_list" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rO9-Nr-jbq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gT8-3a-wSX">
+                                <rect key="frame" x="87" y="96" width="240" height="179"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="179" id="HRX-ny-ojP"/>
+                                    <constraint firstAttribute="width" constant="240" id="v0k-Y9-TsI"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibS-Nh-ZzI">
+                                <rect key="frame" x="87" y="432" width="240" height="106"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OIu-Yg-jFi">
+                                <rect key="frame" x="26" y="643" width="65" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="hsg-MV-9Zp" kind="show" id="7jK-0P-QNP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="UNi-Kw-5Va"/>
+                    </view>
+                    <connections>
+                        <outlet property="dispImage" destination="gT8-3a-wSX" id="ZoW-fJ-LMK"/>
+                        <outlet property="dispLabel" destination="ibS-Nh-ZzI" id="9bm-Ia-WGS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o4J-uQ-Tv0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2637.68115942029" y="-134.5108695652174"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Calender.png" width="1050" height="948"/>
         <image name="Christmas Tree" width="774" height="1350"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="az6-4d-bhO"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -1,4 +1,3 @@
-//
 //  ViewController.swift
 //  Test Bucket list
 //
@@ -9,29 +8,39 @@
 import UIKit
 import Firebase
 
-
+var bucketList = [String]()
+var bucketTitle = [String]()
+let defaults = UserDefaults.standard
+var myIndex = 0
 
 class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDelegate, UITableViewDataSource, UIViewControllerPreviewingDelegate {
+    
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        let previewView = storyboard?.instantiateViewController(withIdentifier: "editIdentifier")
+        guard let previewView = storyboard?.instantiateViewController(withIdentifier: "DispViewController") as? DispViewController else {
+            return nil
+        }
+        previewView.preferredContentSize = CGSize(width: 0, height: 200)
+        
+        guard let indexPath = tableViewTbl.indexPathForRow(at: location) else { return nil }
+        guard let cell = tableViewTbl.cellForRow(at: indexPath) else { return nil }
+        
+        //previewingContext.sourceRect = tableViewTbl.rectForRow(at: indexPath)
+        previewingContext.sourceRect = cell.frame
+        
         return previewView
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        let finalPreview = storyboard?.instantiateViewController(withIdentifier: "editIdentifier")
-        show(finalPreview!, sender: self)
+        show(viewControllerToCommit, sender: self)
     }
-    
     
     @IBOutlet weak var navbar1: UINavigationBar!
     @IBOutlet weak var tableViewTbl: UITableView!
     var storageRef : StorageReference!
     
-    //Array for iteration
     var bucketList = [String]()
     var bucketTitle = [String]()
     let defaults = UserDefaults.standard
-    
     
     func addToBucketList(newBucket: String) {
         if let listItems = defaults.array(forKey: "bucketListArray") as? [String] {
@@ -57,46 +66,51 @@ class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDele
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellId") as! CustomTableViewCell
         cell.cellTitleLbl.text = bucketTitle[indexPath.row]
         fetchFireBaseImage(imageURLLoc: bucketList[indexPath.row], imageView: cell.cellImage)
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         return cell
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+  
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-    }
-    
-     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+//        let editAction = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
+//            func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//                if segue.identifier == "addOption" {
+//                    print("Trying to segue into SecondViewController")
+//                    let DvC = segue.destination as! SecondViewController
+//                    DvC.editTitle = self.bucketTitle[indexPath.row]
+//                    self.defaults.set(self.bucketTitle, forKey: "bucketTitleArray")
+//                }
+//            }
+//        }
+        
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
             self.bucketList.remove(at: indexPath.row)
+            self.bucketTitle.remove(at: indexPath.row)
+            self.defaults.set(self.bucketList, forKey: "bucketListArray")
+            self.defaults.set(self.bucketTitle, forKey: "bucketTitleArray")
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
-        } else {
-            
         }
-    }
-    
-    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return true
+//        editAction.backgroundColor = .blue
+        deleteAction.backgroundColor = .red
+        
+        return [deleteAction]
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        tableViewTbl.isUserInteractionEnabled = true
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longPress))
-        tableViewTbl.addGestureRecognizer(longPressGesture)
+        
         storageRef = Storage.storage().reference()
         self.navigationItem.rightBarButtonItem = self.editButtonItem
-        if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
-            registerForPreviewing(with: self, sourceView: view)
-            
-        } else {
-            print("Error!!!!!")
-        }
+        
+        registerForPreviewing(with: self, sourceView: tableViewTbl)
+        
         if let listItems = defaults.array(forKey: "bucketListArray") as? [String] {
             bucketList = listItems
         }
@@ -118,11 +132,6 @@ class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDele
         return .topAttached
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     func fetchFireBaseImage(imageURLLoc: String, imageView: UIImageView) {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentsDirectory = paths[0]
@@ -153,13 +162,20 @@ class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDele
         performSegue(withIdentifier: "addOption", sender: self)
     }
     
-    @objc func longPress() {
+    func createAlertForEditting (title: String, message: String) {
         
-        if tableViewTbl.isExclusiveTouch == true {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
+            self.performSegue(withIdentifier: "addOption", sender: self)
             
-        }
+        }))
+        
+        
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
         
     }
 }
-
-
