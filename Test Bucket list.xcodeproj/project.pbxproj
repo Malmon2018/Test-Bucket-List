@@ -405,6 +405,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B60F6CC5F7A0E32B532F166A /* Pods-Test Bucket list.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4Q7CG6VV7E;
@@ -421,6 +422,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AADE020A4252D8BD5D3978E8 /* Pods-Test Bucket list.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4Q7CG6VV7E;
