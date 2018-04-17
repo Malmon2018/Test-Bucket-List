@@ -28,6 +28,7 @@ class SecondViewController: UIViewController, UINavigationBarDelegate, UITextFie
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         okayButton.isHidden = true
         imageView.image = editImage
         whatsGoingOnTextField.text = editTitle

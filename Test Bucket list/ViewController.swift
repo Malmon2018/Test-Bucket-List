@@ -71,6 +71,7 @@ class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
         return true
     }
   
@@ -107,6 +108,7 @@ class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDele
         super.viewDidLoad()
         
         storageRef = Storage.storage().reference()
+        
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         registerForPreviewing(with: self, sourceView: tableViewTbl)

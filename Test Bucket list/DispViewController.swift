@@ -9,7 +9,7 @@
 import UIKit
 
 class DispViewController: UIViewController {
-    
+    let defaults = UserDefaults.standard
     @IBOutlet weak var dispImage: UIImageView!
     @IBOutlet weak var dispLabel: UILabel!
     
@@ -24,4 +24,20 @@ class DispViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    
+    @IBAction func editButtonPressed(_ sender: Any) {
+        
+        performSegue(withIdentifier: "dispToSecondVC", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "dispToSecondVC" {
+            let destVC = segue.destination as? SecondViewController
+            
+            
+        }
+    }
+    
+    
 }
