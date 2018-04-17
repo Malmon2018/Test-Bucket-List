@@ -76,17 +76,6 @@ class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDele
   
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-//        let editAction = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
-//            func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//                if segue.identifier == "addOption" {
-//                    print("Trying to segue into SecondViewController")
-//                    let DvC = segue.destination as! SecondViewController
-//                    DvC.editTitle = self.bucketTitle[indexPath.row]
-//                    self.defaults.set(self.bucketTitle, forKey: "bucketTitleArray")
-//                }
-//            }
-//        }
-        
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
             self.bucketList.remove(at: indexPath.row)
             self.bucketTitle.remove(at: indexPath.row)
@@ -96,16 +85,20 @@ class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDele
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
         }
-//        editAction.backgroundColor = .blue
+
         deleteAction.backgroundColor = .red
-        
         return [deleteAction]
+    }
+    
+    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
+        print("viewDidLoad called!")
         storageRef = Storage.storage().reference()
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         
@@ -160,22 +153,5 @@ class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDele
     
     @IBAction func addOptionButton(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "addOption", sender: self)
-    }
-    
-    func createAlertForEditting (title: String, message: String) {
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
-            self.performSegue(withIdentifier: "addOption", sender: self)
-            
-        }))
-        
-        
-        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-        
-        self.present(alert, animated: true, completion: nil)
-        
     }
 }
