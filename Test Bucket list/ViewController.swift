@@ -19,12 +19,14 @@ class ViewController: UIViewController, UINavigationBarDelegate, UITableViewDele
         guard let previewView = storyboard?.instantiateViewController(withIdentifier: "DispViewController") as? DispViewController else {
             return nil
         }
-        previewView.preferredContentSize = CGSize(width: 0, height: 200)
+        previewView.preferredContentSize = CGSize(width: 0, height: 500)
         
         guard let indexPath = tableViewTbl.indexPathForRow(at: location) else { return nil }
-        guard let cell = tableViewTbl.cellForRow(at: indexPath) else { return nil }
+        let cell = tableViewTbl.cellForRow(at: indexPath) as! CustomTableViewCell
+        print(indexPath.row)
+        previewView.text = cell.cellTitleLbl.text
+        previewView.img = cell.cellImage.image
         
-        //previewingContext.sourceRect = tableViewTbl.rectForRow(at: indexPath)
         previewingContext.sourceRect = cell.frame
         
         return previewView

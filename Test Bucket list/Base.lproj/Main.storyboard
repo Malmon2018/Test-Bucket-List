@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hsg-MV-9Zp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hsg-MV-9Zp">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -33,7 +33,7 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add some buckets to your list" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTg-zU-4Np">
-                                <rect key="frame" x="93.666666666666671" y="357.66666666666669" width="226.66666666666663" height="21"/>
+                                <rect key="frame" x="94.666666666666671" y="357.66666666666669" width="226.33333333333331" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -42,7 +42,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="628"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCellId" rowHeight="100" id="UNM-5r-yJn" customClass="CustomTableViewCell" customModule="Test_Bucket_list" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCellId" rowHeight="100" id="UNM-5r-yJn" customClass="CustomTableViewCell" customModule="Test_Bucket_list" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UNM-5r-yJn" id="5lf-5u-7pM">
@@ -50,7 +50,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iwg-US-XiP">
-                                                    <rect key="frame" x="0.0" y="5" width="414" height="86.666666666666671"/>
+                                                    <rect key="frame" x="0.0" y="5" width="414" height="86.333333333333329"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Christmas Tree" translatesAutoresizingMaskIntoConstraints="NO" id="3Tf-Po-Yga">
                                                             <rect key="frame" x="5" y="3" width="80" height="80"/>
@@ -60,7 +60,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CN1-j5-4I8">
-                                                            <rect key="frame" x="87" y="5" width="327" height="76.666666666666671"/>
+                                                            <rect key="frame" x="87" y="5" width="327" height="76.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -166,7 +166,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpG-88-hdW">
-                                <rect key="frame" x="162.33333333333334" y="116" width="90" height="30"/>
+                                <rect key="frame" x="162" y="116" width="90" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <color key="tintColor" red="0.21240991353988647" green="0.47779124975204468" blue="0.96475595235824585" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="+ Add Image">
@@ -243,35 +243,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gT8-3a-wSX">
-                                <rect key="frame" x="87" y="96" width="240" height="179"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="002-S5-W81" userLabel="Bg Image">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="417"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="179" id="HRX-ny-ojP"/>
-                                    <constraint firstAttribute="width" constant="240" id="v0k-Y9-TsI"/>
+                                    <constraint firstAttribute="height" constant="417" id="Bnz-8J-sxk"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibS-Nh-ZzI">
-                                <rect key="frame" x="87" y="432" width="240" height="106"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wDp-Sg-pAz" userLabel="NavBar3">
+                                <rect key="frame" x="0.0" y="30" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <items>
+                                    <navigationItem id="HGL-Oo-dAj">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="8pT-lA-zZG">
+                                            <connections>
+                                                <segue destination="hsg-MV-9Zp" kind="show" id="Cuq-U1-drP"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibS-Nh-ZzI">
+                                <rect key="frame" x="30" y="447" width="354" height="32"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="We're partying!">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="28" name="Garamond-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OIu-Yg-jFi">
-                                <rect key="frame" x="26" y="643" width="65" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <segue destination="hsg-MV-9Zp" kind="show" id="7jK-0P-QNP"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWy-oW-vZ8">
+                                <rect key="frame" x="30" y="486.99999999999994" width="354" height="108.33333333333331"/>
+                                <string key="text">Each summer my family and I always go on vacation and we normally go to Wisconsin Dells or Six Flags and spend more than two weeks in the hotel or sometimes we just go to Michigan.</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="002-S5-W81" firstAttribute="leading" secondItem="rO9-Nr-jbq" secondAttribute="leading" id="5Ip-pn-nDV"/>
+                            <constraint firstItem="TWy-oW-vZ8" firstAttribute="top" secondItem="ibS-Nh-ZzI" secondAttribute="bottom" constant="8" id="LXn-JM-oy4"/>
+                            <constraint firstItem="002-S5-W81" firstAttribute="top" secondItem="rO9-Nr-jbq" secondAttribute="top" id="QLE-Ua-7eo"/>
+                            <constraint firstItem="ibS-Nh-ZzI" firstAttribute="leading" secondItem="UNi-Kw-5Va" secondAttribute="leading" constant="30" id="YtF-jk-WgE"/>
+                            <constraint firstItem="002-S5-W81" firstAttribute="centerX" secondItem="rO9-Nr-jbq" secondAttribute="centerX" id="ZEK-PT-zzl"/>
+                            <constraint firstAttribute="trailing" secondItem="002-S5-W81" secondAttribute="trailing" id="aDL-PQ-0nq"/>
+                            <constraint firstItem="ibS-Nh-ZzI" firstAttribute="top" secondItem="002-S5-W81" secondAttribute="bottom" constant="30" id="dT1-x6-dOI"/>
+                            <constraint firstItem="ibS-Nh-ZzI" firstAttribute="centerX" secondItem="rO9-Nr-jbq" secondAttribute="centerX" id="ndE-T7-64x"/>
+                            <constraint firstItem="UNi-Kw-5Va" firstAttribute="trailing" secondItem="TWy-oW-vZ8" secondAttribute="trailing" constant="30" id="qpC-t6-xAT"/>
+                            <constraint firstItem="TWy-oW-vZ8" firstAttribute="leading" secondItem="UNi-Kw-5Va" secondAttribute="leading" constant="30" id="z2S-Xz-vVw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="UNi-Kw-5Va"/>
                     </view>
                     <connections>
-                        <outlet property="dispImage" destination="gT8-3a-wSX" id="ZoW-fJ-LMK"/>
+                        <outlet property="dispBgImage" destination="002-S5-W81" id="Kkp-ut-Ut0"/>
                         <outlet property="dispLabel" destination="ibS-Nh-ZzI" id="9bm-Ia-WGS"/>
+                        <outlet property="navbar3" destination="wDp-Sg-pAz" id="STa-lF-vdx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o4J-uQ-Tv0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -284,6 +315,6 @@
         <image name="Christmas Tree" width="774" height="1350"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="az6-4d-bhO"/>
+        <segue reference="Cuq-U1-drP"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -18,6 +18,7 @@
 		DCBDF95A2040F4C800674ADA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCBDF9592040F4C800674ADA /* Assets.xcassets */; };
 		DCBDF95D2040F4C800674ADA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCBDF95B2040F4C800674ADA /* LaunchScreen.storyboard */; };
 		DCBDF9672040FC7700674ADA /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBDF9662040FC7700674ADA /* SecondViewController.swift */; };
+		E63926EC2085E203006CB0F8 /* ImageCrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63926EB2085E203006CB0F8 /* ImageCrop.swift */; };
 		E6AB9DF32075C43F003175DD /* Christmas Tree.png in Resources */ = {isa = PBXBuildFile; fileRef = E6AB9DF22075C43E003175DD /* Christmas Tree.png */; };
 		E6AB9DFB2075C5E0003175DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6AB9DFA2075C5DF003175DD /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		DCBDF95C2040F4C800674ADA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DCBDF95E2040F4C800674ADA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCBDF9662040FC7700674ADA /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		E63926EB2085E203006CB0F8 /* ImageCrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCrop.swift; sourceTree = "<group>"; };
 		E6AB9DF22075C43E003175DD /* Christmas Tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Christmas Tree.png"; sourceTree = "<group>"; };
 		E6AB9DFA2075C5DF003175DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,6 +107,7 @@
 				DC4064482047AC4F00ECAB4B /* Calender.png */,
 				E6AB9DF22075C43E003175DD /* Christmas Tree.png */,
 				DCBDF95E2040F4C800674ADA /* Info.plist */,
+				E63926EB2085E203006CB0F8 /* ImageCrop.swift */,
 			);
 			path = "Test Bucket list";
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			files = (
 				DC1D8FC62084EB1D00BEE08E /* CustomTableViewCell.swift in Sources */,
 				DC0DE5CB207DB28700EB9019 /* DispViewController.swift in Sources */,
+				E63926EC2085E203006CB0F8 /* ImageCrop.swift in Sources */,
 				DCBDF9672040FC7700674ADA /* SecondViewController.swift in Sources */,
 				DC5B36BC2072EB2F00878F24 /* SingleBucketCellModel.swift in Sources */,
 				DCBDF9552040F4C800674ADA /* ViewController.swift in Sources */,
